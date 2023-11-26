@@ -27,5 +27,5 @@ jobs:
         with:
           name: bundle
           path: |
-            target/*.jar
-            target/*.exe
+            apps/executable-app-api/target/*.jar
+            apps/executable-app-api/target/*.exe
