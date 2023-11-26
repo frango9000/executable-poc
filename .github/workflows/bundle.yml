@@ -2,7 +2,7 @@ name: Bundle
 
 on:
   push:
-  workflow_call:
+  workflow_dispatch:
 
 jobs:
   bundle:
