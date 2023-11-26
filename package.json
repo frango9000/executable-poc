@@ -2,7 +2,12 @@
   "name": "@executable-poc/source",
   "version": "0.0.0",
   "license": "MIT",
-  "scripts": {},
+  "scripts": {
+    "clean": "nx clean executable-app-api",
+    "bundle": "yarn clean && yarn build",
+    "build": "nx run-many --target=build --projects=executable-app-ui,executable-app-api",
+    "serve": "nx run-many --target=serve --all --parallel"
+  },
   "private": true,
   "dependencies": {
     "@angular/animations": "~17.0.0",

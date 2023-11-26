@@ -8,6 +8,12 @@ public class ExecutableAppApiApplication {
 
   public static void main(String[] args) {
     SpringApplication.run(ExecutableAppApiApplication.class, args);
+
+    try {
+      Browser.openUrl("http://localhost:8080/app/index.html");
+    } catch (Exception e) {
+      e.printStackTrace();
+    }
   }
 
 }

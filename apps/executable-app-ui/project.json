@@ -7,14 +7,15 @@
   "tags": [],
   "targets": {
     "build": {
-      "executor": "@angular-devkit/build-angular:application",
+      "executor": "@angular-devkit/build-angular:browser-esbuild",
       "outputs": [
         "{options.outputPath}"
       ],
       "options": {
-        "outputPath": "dist/apps/executable-app-ui",
+        "outputPath": "apps/executable-app-api/target/classes/static/app",
+        "baseHref": "/app/",
         "index": "apps/executable-app-ui/src/index.html",
-        "browser": "apps/executable-app-ui/src/main.ts",
+        "main": "apps/executable-app-ui/src/main.ts",
         "polyfills": [
           "zone.js"
         ],
@@ -55,7 +56,7 @@
     "serve": {
       "executor": "@angular-devkit/build-angular:dev-server",
       "options": {
-        "browserTarget": "executable-app-ui:build",
+        "buildTarget": "executable-app-ui:build",
         "proxyConfig": "apps/executable-app-ui/proxy.conf.json"
       },
       "configurations": {
