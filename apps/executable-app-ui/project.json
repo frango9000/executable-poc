@@ -1,0 +1,85 @@
+{
+  "name": "executable-app-ui",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "projectType": "application",
+  "prefix": "executable-poc",
+  "sourceRoot": "apps/executable-app-ui/src",
+  "tags": [],
+  "targets": {
+    "build": {
+      "executor": "@angular-devkit/build-angular:application",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "outputPath": "dist/apps/executable-app-ui",
+        "index": "apps/executable-app-ui/src/index.html",
+        "browser": "apps/executable-app-ui/src/main.ts",
+        "polyfills": ["zone.js"],
+        "tsConfig": "apps/executable-app-ui/tsconfig.app.json",
+        "assets": [
+          "apps/executable-app-ui/src/favicon.ico",
+          "apps/executable-app-ui/src/assets"
+        ],
+        "styles": ["apps/executable-app-ui/src/styles.css"],
+        "scripts": []
+      },
+      "configurations": {
+        "production": {
+          "budgets": [
+            {
+              "type": "initial",
+              "maximumWarning": "500kb",
+              "maximumError": "1mb"
+            },
+            {
+              "type": "anyComponentStyle",
+              "maximumWarning": "2kb",
+              "maximumError": "4kb"
+            }
+          ],
+          "outputHashing": "all"
+        },
+        "development": {
+          "optimization": false,
+          "extractLicenses": false,
+          "sourceMap": true
+        }
+      },
+      "defaultConfiguration": "production"
+    },
+    "serve": {
+      "executor": "@angular-devkit/build-angular:dev-server",
+      "configurations": {
+        "production": {
+          "buildTarget": "executable-app-ui:build:production"
+        },
+        "development": {
+          "buildTarget": "executable-app-ui:build:development"
+        }
+      },
+      "defaultConfiguration": "development"
+    },
+    "extract-i18n": {
+      "executor": "@angular-devkit/build-angular:extract-i18n",
+      "options": {
+        "buildTarget": "executable-app-ui:build"
+      }
+    },
+    "lint": {
+      "executor": "@nx/eslint:lint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": [
+          "apps/executable-app-ui/**/*.ts",
+          "apps/executable-app-ui/**/*.html"
+        ]
+      }
+    },
+    "test": {
+      "executor": "@nx/jest:jest",
+      "outputs": ["{workspaceRoot}/coverage/{projectRoot}"],
+      "options": {
+        "jestConfig": "apps/executable-app-ui/jest.config.ts"
+      }
+    }
+  }
+}
