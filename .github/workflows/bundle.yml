@@ -14,7 +14,7 @@ jobs:
         with:
           distribution: 'temurin'
           java-version: '17'
-          cache: 'mvn'
+          cache: 'maven'
 
       - uses: actions/setup-node@v4
         with:
